@@ -21,7 +21,7 @@
     ?>
     <main id="hyk" class="min-h-[80%] overflow-hidden relative">
         <?php
-        include $srcpage;
+        include __DIR__ . $srcpage;
         ?>
     </main>
     <?php
