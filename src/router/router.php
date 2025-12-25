@@ -7,10 +7,8 @@ $allPages = [
     "/book" => "book_controller.php",
     "/explore" => "explore_controller.php",
     "/description" => "desc_controller.php",
-    /* "/register" => "register_controller.php",
+    "/signup" => "signup_controller.php",
     "/login" => "login_controller.php",
-    "/profile" => "profile_controller.php",
-    "/logout"  => "logout_controller.php" */
 ];
 
 if (isset($allPages[$page])) {
