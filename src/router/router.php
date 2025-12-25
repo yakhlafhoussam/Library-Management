@@ -20,4 +20,5 @@ if (isset($allPages[$page])) {
 
 include __DIR__ . '/../controllers/' . $path;
 
+
 ?>

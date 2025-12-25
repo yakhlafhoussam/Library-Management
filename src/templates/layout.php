@@ -27,7 +27,9 @@
     <?php
     include 'footer.php';
     ?>
+    <div class="hidden" id="page" data-name="<?php echo $page ?>"></div>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src="/assets/script.js"></script>
 </body>
 
 </html>

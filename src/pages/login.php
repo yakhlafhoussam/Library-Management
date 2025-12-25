@@ -1,12 +1,17 @@
 <div class="w-screen h-full flex flex-col justify-center items-center gap-10 relative">
+    <a id="toprofil" href="profile" class="w-0 h-0"></a>
+    <div id="toast0" class="flex gap-2 bg-red-600 text-white px-4 py-3 rounded-lg absolute top-10 -left-80">
+        <span class="font-semibold">Error:</span>
+        <h1 id="error"><?php if ($errormsg) { echo $errormsg; } ?></h1>
+    </div>
     <div class="w-1/2 px-4 py-8 bg-[#ffffdc] rounded-3xl flex flex-col justify-center items-center gap-10">
         <h1 class="font-inter font-bold text-5xl text-[#C37A67]">Log in</h1>
         <form method="POST" class="w-11/12 flex flex-col justify-center items-center gap-8">
             <div class="w-11/12 h-16 flex justify-center">
-                <input class="focus:outline-0 trunoff rounded-full w-full h-full px-8 border border-solid" type="text" name="email" value='' placeholder="Email...">
+                <input class="focus:outline-0 trunoff rounded-full w-full h-full px-8 border border-solid" type="text" name="email" value='<?php echo $email; ?>' placeholder="Email...">
             </div>
             <div class="w-11/12 h-16 flex justify-center">
-                <input class="focus:outline-0 trunoff rounded-full w-full h-full px-8 border border-solid" type="password" name="password" value='' placeholder="Password...">
+                <input class="focus:outline-0 trunoff rounded-full w-full h-full px-8 border border-solid" type="password" name="password" value='<?php echo $password; ?>' placeholder="Password...">
             </div>
             <div class="flex gap-2">
                 <button id="send" type="submit" class="bg-[#C37A67] w-32 h-16 rounded-full font-inter font-bold text-xl text-white hover:bg-[#9CAF88]">Log in</button>
