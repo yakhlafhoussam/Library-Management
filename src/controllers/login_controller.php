@@ -1,15 +1,15 @@
 <?php
 
+if (isset($_SESSION["id"])) {
+    header('location: 404');
+}
+
 $srcpage = '/../pages/login.php' ;
 
 include __DIR__ . '/../config/database.php';
 
 $hyk = new db ();
 $conn = $hyk->connect();
-
-if (isset($_SESSION["id"])) {
-    header('location: 404');
-}
 
 $errormsg = '';
 $email = '';
@@ -27,9 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newLogin = new user_class ($email, $password);
         $login = $newLogin->login($conn);
         if ($login) {
-            $errormsg = 'THE LOG IN IS VERY VERY VERY GOOOD';
+            header('location: /book');
         } else {
-            $errormsg = 'SF GHAYAREHA';
+            $errormsg = 'Incorrect email or password';
         }
     }
 }

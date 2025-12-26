@@ -1,5 +1,9 @@
 <?php
 
+if (isset($_SESSION["id"])) {
+    header('location: 404');
+}
+
 $srcpage = '/../pages/signup.php' ;
 
 include __DIR__ . '/../config/database.php';
@@ -7,29 +11,27 @@ include __DIR__ . '/../config/database.php';
 $hyk = new db ();
 $conn = $hyk->connect();
 
-if (isset($_SESSION["id"])) {
-    header('location: 404');
-}
-
 $errormsg = '';
 $first = '';
 $last = '';
+$gender = 'L';
 $email = '';
 $password = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $first = $_POST['first'];
     $last = $_POST['last'];
     $email = $_POST['email'];
+    $gender = $_POST['gender'];
     $password = $_POST['password'];
 
-    if (empty($first) || empty($last) || empty($email) || empty($password)) {
+    if (empty($first) || empty($last) || empty($email) || empty($password) || $gender == "L") {
         $errormsg = 'Please fill in all fields';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errormsg = 'Invalid email';
     } else {
         include __DIR__ . '/../models/user_class.php';
-        $newUser = new user_class ($email, $password);
-        $signup = $newUser->signup($first, $last, $conn);
+        $newUser = new user_class ($email, $password,);
+        $signup = $newUser->signup($first, $last, $gender, $conn);
         if ($signup) {
             $errormsg = 'Good';
         } else {

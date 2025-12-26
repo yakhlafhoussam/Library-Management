@@ -19,7 +19,7 @@
     <?php
     include 'header.php';
     ?>
-    <main id="hyk" class="<?php if ($page == '/description' || $page == '/login' || $page == '/signup') { echo 'h-[80%]'; } else { echo 'min-h-[80%]'; } ?> overflow-hidden relative">
+    <main id="hyk" class="<?php if ($page == '/description' || $page == '/login' || $page == '/signup' || $page == '/profile' || $page == '/newbook') { echo 'h-[80%]'; } else { echo 'min-h-[80%]'; } ?> overflow-hidden relative">
         <?php
         include __DIR__ . $srcpage;
         ?>

@@ -1,5 +1,4 @@
 <div class="w-screen h-full flex flex-col justify-center items-center gap-10 relative">
-    <a id="toprofil" href="profile" class="w-0 h-0"></a>
     <div id="toast0" class="flex gap-2 bg-red-600 text-white px-4 py-3 rounded-lg absolute top-10 -left-80">
         <span class="font-semibold">Error:</span>
         <h1 id="error"><?php if ($errormsg) { echo $errormsg; } ?></h1>

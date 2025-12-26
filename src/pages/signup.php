@@ -22,6 +22,13 @@
                 <input class="trunoff focus:outline-0 rounded-full w-full h-full px-8 border border-solid" type="text" name="last" value='<?php echo $last ?>' placeholder="Lastname...">
             </div>
             <div class="w-11/12 h-16 flex justify-center">
+                <select class="trunoff focus:outline-0 rounded-full w-full h-full px-8 border border-solid" name="gender">
+                    <option value="L" <?php if ($gender == "L") { echo 'selected'; } ?>>Gender</option>
+                    <option value="M" <?php if ($gender == "M") { echo 'selected'; } ?>>Male</option>
+                    <option value="F" <?php if ($gender == "F") { echo 'selected'; } ?>>Female</option>
+                </select>
+            </div>
+            <div class="w-11/12 h-16 flex justify-center">
                 <input class="trunoff focus:outline-0 rounded-full w-full h-full px-8 border border-solid" type="text" name="email" value='<?php echo $email ?>' placeholder="Your Email...">
             </div>
             <div class="w-11/12 h-16 flex justify-center">
