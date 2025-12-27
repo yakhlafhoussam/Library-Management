@@ -3,15 +3,13 @@
 
     <div class="w-11/12 flex flex-wrap justify-center gap-4 p-5 my-8">
         <?php 
-
-        print_r($stackBook) ;
         
         for ($i=0; $i < count($stackBook); $i++) { 
             echo '
-            <form action="POST">
-                <input class="hidden" name="' . $stackBook['id'] . '" type="text">
+            <form method="POST">
+                <input class="hidden" name="chose" type="text" value="' . $stackBook[$i]['id'] . '">
                 <button type="submit">
-                    <img class="h-80 w-56 border-8 border-solid border-gray-500 hover:scale-95 transition-transform cursor-pointer" src="' . $stackBook['cover'] . '" alt="">
+                    <img class="h-80 w-56 border-8 border-solid border-gray-500 hover:scale-95 transition-transform cursor-pointer" src="' . $stackBook[$i]['cover'] . '" alt="">
                 </button>
             </form>
             ';
