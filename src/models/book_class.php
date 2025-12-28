@@ -24,11 +24,6 @@ class book_class {
         $stmt->execute([$id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
-    public function deletebook($id) {
-        $stmt = $this->conn->prepare("DELETE FROM books WHERE id = ?");
-        $stmt->execute([$id]);
-    }
 }
 
 ?>

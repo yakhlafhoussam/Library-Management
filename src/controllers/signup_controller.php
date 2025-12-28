@@ -1,7 +1,9 @@
 <?php
 
-if (isset($_SESSION["id"])) {
-    header('location: 404');
+if (isset($_SESSION['id'])) {
+    $srcpage = '/../pages/404.php';
+    include __DIR__ . '/../templates/layout.php';
+    exit();
 }
 
 $srcpage = '/../pages/signup.php' ;

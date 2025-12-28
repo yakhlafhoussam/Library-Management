@@ -1,7 +1,9 @@
 <?php
 
-if (isset($_SESSION["id"])) {
-    header('location: 404');
+if (isset($_SESSION['id'])) {
+    $srcpage = '/../pages/404.php';
+    include __DIR__ . '/../templates/layout.php';
+    exit();
 }
 
 $srcpage = '/../pages/login.php' ;
@@ -27,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $newLogin = new user_class ($email, $password);
         $login = $newLogin->login($conn);
         if ($login) {
-            header('location: /book');
+            header('location: /');
         } else {
             $errormsg = 'Incorrect email or password';
         }

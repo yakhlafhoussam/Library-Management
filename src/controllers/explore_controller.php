@@ -1,5 +1,7 @@
 <?php
 
+$errormsg = '';
+
 include __DIR__ . '/../config/database.php';
 
 $hyk = new db();
@@ -14,9 +16,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $chose = $_POST['chose'];
         include __DIR__ . '/desc_controller.php';
     } elseif (isset($_POST['delete']) && isset($_SESSION['role']) && $_SESSION['role'] == 'admin') {
-        $books->deletebook($_POST['delete']);
-        header('location: explore');
-        exit();
+        include __DIR__ . '/../models/admin_class.php';
+        $del = new admin_class($conn);
+        $result = $del->deletebook($_POST['delete']);
+        if ($result) {
+            header('location: explore');
+            exit();
+        } else {
+            $errormsg = 'This book is borrowed by someone !';
+            $chose = $_POST['delete'];
+            include __DIR__ . '/desc_controller.php';
+        }
     }
 } else {
     $srcpage = '/../pages/explore.php';

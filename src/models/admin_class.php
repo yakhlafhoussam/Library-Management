@@ -14,6 +14,19 @@ class admin_class extends user_class {
         $stmt = $this->conn->prepare("INSERT INTO books (title, author, year, cover) VALUES (?, ?, ?, ?)");
         $stmt->execute([$title, $author, $year, $cover]);
     }
+
+    public function deletebook($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM borrows WHERE bookId = ? AND returnDate IS NULL");
+        $stmt->execute([$id]);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        if (!$result) {
+            $stmt = $this->conn->prepare("DELETE FROM books WHERE id = ?");
+            $stmt->execute([$id]);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 ?>

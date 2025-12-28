@@ -1,7 +1,9 @@
 <?php
 
 if (!isset($_SESSION['id'])) {
-    header('location: 404');
+    $srcpage = '/../pages/404.php';
+    include __DIR__ . '/../templates/layout.php';
+    exit();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -21,12 +23,23 @@ $first = '';
 $last = '';
 $gender = 'L';
 $email = '';
-$numBorrow;
 
 include __DIR__ . '/../models/profile_class.php';
 
 $profile = new profile_class($userID, $conn);
 $userInfo = $profile->profile($conn);
+
+include __DIR__ . '/../models/borrow_class.php';
+
+$borrows = new borrow_class($conn);
+$numBorrow = $borrows->isactive();
+$closeBorrow = $borrows->close();
+
+if ($numBorrow) {
+    $numBorrow = count($numBorrow);
+} if ($closeBorrow) {
+    $closeBorrow = count($closeBorrow);
+}
 
 include __DIR__ . '/../templates/layout.php';
 
