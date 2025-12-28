@@ -27,6 +27,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $chose = $_POST['delete'];
             include __DIR__ . '/desc_controller.php';
         }
+    } elseif (isset($_POST['borrow']) && isset($_SESSION['role'])) {
+        include __DIR__ . '/../models/reader_class.php';
+        $del = new reader_class($_SESSION['id']);
+        $result = $del->borrowBook($_POST['borrow'], $conn);
+        if (!$result) {
+            $errormsg = 'This book is borrowed by someone !';
+            $chose = $_POST['borrow'];
+            include __DIR__ . '/desc_controller.php';
+        } else {
+            header('location: /borrow');
+            exit();
+        }
     }
 } else {
     $srcpage = '/../pages/explore.php';
