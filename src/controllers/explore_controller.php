@@ -35,7 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errormsg = 'This book is borrowed by someone !';
             $chose = $_POST['borrow'];
             include __DIR__ . '/desc_controller.php';
-        } else {
+        } elseif ($result == 'already_has_book') {
+            $errormsg = "You cannot borrow more than one book at a time !";
+            $chose = $_POST['borrow'];
+            include __DIR__ . '/desc_controller.php';
+        } elseif ($result == 'succes') {
             header('location: /borrow');
             exit();
         }
