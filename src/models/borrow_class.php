@@ -19,6 +19,17 @@ class borrow_class {
         }
     }
 
+    public function readerisactive($id) {
+        $stmt = $this->conn->prepare("SELECT * FROM borrows WHERE returnDate IS NULL AND readerId = ?");
+        $stmt->execute([$id]);
+        $borrow = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($borrow) {
+            return $borrow;
+        } else {
+            return false;
+        }
+    }
+
     public function close() {
         $stmt = $this->conn->prepare("SELECT * FROM borrows WHERE returnDate IS NOT NULL");
         $stmt->execute();

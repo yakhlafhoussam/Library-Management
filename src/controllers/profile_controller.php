@@ -26,7 +26,7 @@ $email = '';
 
 include __DIR__ . '/../models/profile_class.php';
 
-$profile = new profile_class($userID, $conn);
+$profile = new profile_class($userID);
 $userInfo = $profile->profile($conn);
 
 include __DIR__ . '/../models/borrow_class.php';
